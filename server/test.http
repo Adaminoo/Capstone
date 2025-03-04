@@ -1,0 +1,22 @@
+POST  http://localhost:3001/api/signup
+Content-Type: application/json
+
+{
+  "username": "TylerVanSickle",
+  "firstName": "Tyler",
+  "lastName": "VanSickle",
+  "email": "bubbavansmack@gmail.com",
+  "birthday": "1999-10-06",
+  "password": "Admin",
+  "isAdmin": true
+}
+
+###
+// When using this login, you only need to provide the username and password
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "TylerVanSickle",
+  "password": "Admin"
+}

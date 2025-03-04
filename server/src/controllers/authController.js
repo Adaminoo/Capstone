@@ -9,6 +9,7 @@ const { generateToken } = require('../utils/authUtils');
 
 
 // LOGIN ROUTE (POST)
+// When logging in, it only checks for the usernmae and password. 
 exports.login = async (req, res) => {
   const { username, password } = req.body;
 
