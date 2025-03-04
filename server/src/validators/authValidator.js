@@ -19,5 +19,5 @@ const handleValidationResult = (req, res, next) => {
   next();
 };
 
-// Goes to 
+// Goes to authroutes.js
 module.exports = { validateSignup, handleValidationResult };

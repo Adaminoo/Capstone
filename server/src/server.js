@@ -15,7 +15,7 @@ app.use(express.json());
 // Auuth Routes
 app.use('/api', authRoutes);
 
-// Error thingy
+// Error Thingy
 app.use(errorHandler);
 
 
