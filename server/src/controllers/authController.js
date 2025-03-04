@@ -35,6 +35,7 @@ exports.login = async (req, res) => {
 };
 
 // REGISTER ROUTE (POST)
+// This is for basic signup, I will make another one for Admins signing up other Admins.
 exports.signup = async (req, res) => {
   const { username, firstName, lastName, email, birthday, password } = req.body;
 
