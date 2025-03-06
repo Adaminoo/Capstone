@@ -3,6 +3,7 @@ const { login, signup } = require('../controllers/authController');
 const { validateSignup, handleValidationResult } = require('../validators/authValidator');
 const router = express.Router();
 
+
 // Routes
 router.post('/login', login);
 router.post('/signup', validateSignup, handleValidationResult, signup);
