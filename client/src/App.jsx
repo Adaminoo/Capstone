@@ -8,6 +8,16 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0);
   const [data, setData] = useState(null);
+  const [signup, setSignup] = useState({
+    username: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    birthday: '',
+    password: '',
+    isAdmin: ''
+  })
+console.log('signup: ' + signup.username)
 
   useEffect(() => {
     fetch("/api/message")
@@ -15,18 +25,37 @@ function App() {
       .then((data) => setData(data.message));
   }, []);
 
+  function handleChange({ target }) {
+    console.log(target.value, target.name)
+    const _signup = { ...signup };
+    console.log(signup)
+    setSignup(target.name, target.value);
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='body'>
+        <div className='top'>
+          <div className='title'>Student User Manager</div>
+          <div className='links'></div>
+        </div>
+        <div className='bottom'>
+          <div className='signup'>
+          <input 
+            className='userInput' 
+            id='username'
+            value={signup.username}
+            onChange={handleChange}
+          ></input>
+            <input className='userInput' id='firstName'></input>
+            <input className='userInput' id='firstName'></input>
+            <input className='userInput' id='email'></input>
+            <input className='userInput' id='birthday'></input>
+            <input className='userInput' id='password'></input>
+            <input className='userInput' id='isAdmin'></input>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -36,9 +65,7 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
   )
 }
