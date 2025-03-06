@@ -37,7 +37,7 @@ exports.login = async (req, res) => {
 // REGISTER ROUTE (POST)
 // This is for basic signup, I will make another one for Admins signing up other Admins.
 exports.signup = async (req, res) => {
-  const { username, firstName, lastName, email, birthday, password } = req.body;
+  const { username, firstName, lastName, email, birthday, password, isAdmin } = req.body;
 
   // Validate fields
   if (!username || !firstName || !lastName || !email || !birthday || !password) {
@@ -63,12 +63,12 @@ exports.signup = async (req, res) => {
     const hashedPassword = await hashPassword(password);
 
     const sql = `
-      INSERT INTO users (username, first_name, last_name, email, birthday, password) 
-      VALUES ($1, $2, $3, $4, $5, $6) 
+      INSERT INTO users (username, first_name, last_name, email, birthday, password, isAdmin) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7) 
       RETURNING id
     `;
     
-    const result = await db.query(sql, [username, firstName, lastName, email, birthday, hashedPassword]);
+    const result = await db.query(sql, [username, firstName, lastName, email, birthday, hashedPassword, isAdmin]);
 
     res.status(201).json({
       message: "User created successfully",

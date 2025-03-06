@@ -5,10 +5,10 @@ Content-Type: application/json
   "username": "TylerV",
   "firstName": "Tyler",
   "lastName": "VanSickle",
-  "email": "tylervansickle@test.com",
+  "email": "tylervansicse@test.com",
   "birthday": "1999-10-06",
   "password": "Pass",
-  "isAdmin": true
+  "isAdmin" : false
 }
 
 ###
@@ -17,6 +17,6 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-    "username": "TylerV",
-  "password": "test"
+    "username": "TylerS",
+  "password": "Pass"
 }
