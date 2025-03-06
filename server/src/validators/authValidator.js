@@ -8,7 +8,7 @@ const validateSignup = [
   check('email').isEmail().withMessage('Please provide a valid email address'),
   check('birthday').isDate().withMessage('Birthday is required'),
   check('password').notEmpty().withMessage('Password is required'),
-  check('isAdmin').isBoolean().optional().withMessage('isAdmin must be a boolean'),
+  check('isAdmin').isBoolean().optional().default(false).withMessage('isAdmin must be a boolean')
 ];
 
 // Resutls 

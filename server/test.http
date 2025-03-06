@@ -2,13 +2,12 @@ POST  http://localhost:3001/api/signup
 Content-Type: application/json
 
 {
-  "username": "TylerV",
+  "username": "Tyler",
   "firstName": "Tyler",
   "lastName": "VanSickle",
-  "email": "tylervansicse@test.com",
+  "email": "tyleranie@test.com",
   "birthday": "1999-10-06",
-  "password": "Pass",
-  "isAdmin" : false
+  "password": "Pass"
 }
 
 ###
@@ -17,6 +16,6 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-    "username": "TylerS",
+  "username": "TylerS",
   "password": "Pass"
 }

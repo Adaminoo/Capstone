@@ -63,7 +63,7 @@ exports.signup = async (req, res) => {
     const hashedPassword = await hashPassword(password);
 
     const sql = `
-      INSERT INTO users (username, first_name, last_name, email, birthday, password, isAdmin) 
+      INSERT INTO users (username, firstName, lastName, email, birthday, password, isAdmin) 
       VALUES ($1, $2, $3, $4, $5, $6, $7) 
       RETURNING id
     `;
