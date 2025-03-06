@@ -15,6 +15,11 @@ app.use(express.json());
 // Auuth Routes
 app.use('/api', authRoutes);
 
+
+app.get("/api/message", (req, res) => {
+  res.json({ message: "Hello from server!" });
+});
+
 // Error Thingy
 app.use(errorHandler);
 
