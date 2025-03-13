@@ -9,15 +9,14 @@ function App() {
   const [count, setCount] = useState(0);
   const [data, setData] = useState(null);
   const [signup, setSignup] = useState({
-    username: '',
-    first_name: '',
-    last_name: '',
+    username: "",
+    firstName: '',
+    lastName: '',
     email: '',
     birthday: '',
     password: '',
-    isAdmin: ''
+    isAdmin: false
   })
-console.log('signup: ' + signup.username)
 
   useEffect(() => {
     fetch("/api/message")
@@ -25,11 +24,43 @@ console.log('signup: ' + signup.username)
       .then((data) => setData(data.message));
   }, []);
 
-  function handleChange({ target }) {
+  useEffect(() => {
+    fetch('/api/login')
+    .then((res) => {
+      console.log(res)
+    })
+  })
+
+  const handleLogin = (e) => {
+    fetch('/api/login')
+    .then((res) => {
+      console.log(res)
+    })
+  }
+
+  {/*function handleChange({ target }) {
     console.log(target.value, target.name)
-    const _signup = { ...signup };
-    console.log(signup)
+    const _signup = { ...signup, [name]: value };
     setSignup(target.name, target.value);
+    console.log(signup)
+
+  }*/}
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSignup(prevSignup => ({
+      ...prevSignup,
+      [name]: value
+    }));
+    console.log(signup)
+  };
+  
+  const handleCheck = (e) => {
+    const { name, checked } = e.target;
+    setSignup(prevSignup => ({
+      ...prevSignup,
+      [name]: checked 
+    }));
   }
 
   return (
@@ -44,15 +75,54 @@ console.log('signup: ' + signup.username)
           <input 
             className='userInput' 
             id='username'
-            value={signup.username}
+            name='username'
+            defaultValue={signup.username}
             onChange={handleChange}
           ></input>
-            <input className='userInput' id='firstName'></input>
-            <input className='userInput' id='firstName'></input>
-            <input className='userInput' id='email'></input>
-            <input className='userInput' id='birthday'></input>
-            <input className='userInput' id='password'></input>
-            <input className='userInput' id='isAdmin'></input>
+            <input 
+              className='userInput' 
+              id='firstName'
+              name='firstName'
+              defaultValue={signup.firstName}
+              onChange={handleChange}
+
+            ></input>
+            <input 
+             className='userInput' 
+             id='lastName'
+             name='lastName'
+             defaultValue={signup.lastName}
+             onChange={handleChange}
+            ></input>
+            <input 
+              className='userInput' 
+              id='email'
+              name='email'
+              defaultValue={signup.email}
+              onChange={handleChange}
+            ></input>
+            <input 
+             className='userInput' 
+              id='birthday'
+              name='birthday'
+              defaultValue={signup.birthday}
+              onChange={handleChange}
+            ></input>
+            <input 
+             className='userInput' 
+              id='password'
+              name='password'
+              defaultValue={signup.password}
+              onChange={handleChange}
+            ></input>
+            <input 
+             className='userInput' 
+             type='checkbox'
+              id='isAdmin'
+              name='isAdmin'
+              checked={signup.isAdmin}
+              onChange={handleCheck}
+            ></input>
           </div>
         </div>
       </div>
