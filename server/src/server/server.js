@@ -3,8 +3,8 @@ const path = require("path");
 const dotenv = require("dotenv");
 const authRoutes = require("../routes/authRoutes");
 const errorHandler = require("../middleware/errorMiddleware");
-const profileRoutes = require("../routes/profileRoutes"); 
-const courseRoutes = require('../routes/courseRoutes')
+const profileRoutes = require("../routes/profileRoutes");
+const courseRoutes = require("../routes/courseRoutes");
 
 dotenv.config();
 
@@ -18,10 +18,10 @@ app.use(express.json());
 app.use("/api", authRoutes);
 
 // Profile Routes
-app.use("/api", profileRoutes);  // Profile routes should be applied here
+app.use("/api", profileRoutes);
 
 //Course Routes
-app.use('/api', courseRoutes);
+app.use("/api", courseRoutes);
 
 // Error Middleware
 app.use(errorHandler);
