@@ -1,10 +1,10 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
-// Hash pass 
+// Hash pass
 async function hashPassword(password) {
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
@@ -19,9 +19,8 @@ async function comparePassword(password, hash) {
 
 // Generate Token
 function generateToken(user_id) {
-  return jwt.sign({ user_id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  return jwt.sign({ user_id }, process.env.JWT_SECRET, { expiresIn: "1h" });
 }
-
 
 // Goes to authController.js
 module.exports = { hashPassword, comparePassword, generateToken };

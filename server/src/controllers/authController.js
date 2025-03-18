@@ -1,19 +1,17 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const db = require('../config/db');
-const { hashPassword, comparePassword } = require('../utils/authUtils');
-const { generateToken } = require('../utils/authUtils');
-
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const db = require("../config/db");
+const { hashPassword, comparePassword } = require("../utils/authUtils");
+const { generateToken } = require("../utils/authUtils");
 
 //THEY BOTH GO TO AUTHROUTES.js
 
-
 // LOGIN ROUTE (POST)
-// When logging in, it only checks for the usernmae and password. 
+// When logging in, it only checks for the usernmae and password.
 exports.login = async (req, res) => {
   const { username, password } = req.body;
 
-  const sql = 'SELECT * FROM users WHERE username = $1'; 
+  const sql = "SELECT * FROM users WHERE username = $1";
   try {
     const result = await db.query(sql, [username]);
     if (result.rows.length === 0) {
@@ -37,16 +35,24 @@ exports.login = async (req, res) => {
 // REGISTER ROUTE (POST)
 // This is for basic signup, I will make another one for Admins signing up other Admins.
 exports.signup = async (req, res) => {
-  const { username, firstName, lastName, email, birthday, password, isAdmin } = req.body;
+  const { username, firstName, lastName, email, birthday, password, isAdmin } =
+    req.body;
 
   // Validate fields
-  if (!username || !firstName || !lastName || !email || !birthday || !password) {
+  if (
+    !username ||
+    !firstName ||
+    !lastName ||
+    !email ||
+    !birthday ||
+    !password
+  ) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
   // Check if username already exists
-  const checkUsername = 'SELECT * FROM users WHERE username = $1';
-  const checkEmail = 'SELECT * FROM users WHERE email = $1';
+  const checkUsername = "SELECT * FROM users WHERE username = $1";
+  const checkEmail = "SELECT * FROM users WHERE email = $1";
 
   try {
     const usernameResult = await db.query(checkUsername, [username]);
@@ -67,12 +73,20 @@ exports.signup = async (req, res) => {
       VALUES ($1, $2, $3, $4, $5, $6, $7) 
       RETURNING id
     `;
-    
-    const result = await db.query(sql, [username, firstName, lastName, email, birthday, hashedPassword, isAdmin]);
+
+    const result = await db.query(sql, [
+      username,
+      firstName,
+      lastName,
+      email,
+      birthday,
+      hashedPassword,
+      isAdmin,
+    ]);
 
     res.status(201).json({
       message: "User created successfully",
-      user_id: result.rows[0].id
+      user_id: result.rows[0].id,
     });
   } catch (err) {
     console.error("Error creating user:", err);

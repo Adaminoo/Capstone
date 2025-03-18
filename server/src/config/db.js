@@ -21,6 +21,5 @@ pool.connect((err, client, release) => {
   release();
 });
 
-
 //Goes to authController.js
 module.exports = pool;
