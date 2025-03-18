@@ -2,13 +2,13 @@ POST  http://localhost:3001/api/signup
 Content-Type: application/json
 
 {
-  "username": "Tyler",
+  "username": "Bubbles",
   "firstName": "Tyler",
   "lastName": "VanSickle",
-  "email": "tylervansickle@test.com",
+  "email": "Bubbles@test.com",
   "birthday": "1999-10-06",
   "password": "Pass",
-  "isAdmin": false
+  "isAdmin": true
 }
 
 ###
@@ -17,7 +17,7 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-  "username": "Tyler",
+  "username": "Bubbles",
   "password": "Pass"
 }
 
@@ -25,8 +25,8 @@ Content-Type: application/json
 
 POST http://localhost:3001/api/courses/5/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDIzMDczMzYsImV4cCI6MTc0MjMxMDkzNn0.GQ-bMgwhHuisP6PMdj_EiJWC7u6qUIy4MTkjad60cE8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDIzMDk1MjgsImV4cCI6MTc0MjMxMzEyOH0.VzBuBkSa_g4Zps3g529RbjQRSqfhyEKJNoqO8tKuxo8
 
 {
-  "username": "Tyler"
+  "username": "Bubbles"
 }

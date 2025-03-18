@@ -71,7 +71,7 @@ exports.signup = async (req, res) => {
     const sql = `
       INSERT INTO users (username, firstName, lastName, email, birthday, password, isAdmin) 
       VALUES ($1, $2, $3, $4, $5, $6, $7) 
-      RETURNING id
+      RETURNING user_id
     `;
 
     const result = await db.query(sql, [
