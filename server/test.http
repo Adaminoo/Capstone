@@ -25,7 +25,7 @@ Content-Type: application/json
 
 POST http://localhost:3001/api/courses/5/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDIzMDk1MjgsImV4cCI6MTc0MjMxMzEyOH0.VzBuBkSa_g4Zps3g529RbjQRSqfhyEKJNoqO8tKuxo8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDIzMTAxMDgsImV4cCI6MTc0MjMxMzcwOH0.VYullS58aTvTs3tKahCeiu3ALx5y2H0zIVrkXInmL-M
 
 {
   "username": "Bubbles"
