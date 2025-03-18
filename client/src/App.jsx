@@ -74,16 +74,15 @@ function App() {
   if (!status) {
     return (
       <div className='login'>
-            <div>
-          <div className='title'>Student User Manager</div>
-
-              <div>Username: </div>
-            <input id='loginUsername'></input>
-            <div>Password</div>
-            <input id='loginPassword'></input>
-            </div>
-            <button onClick={handleLogin}>Login</button>
-          </div>
+        <div className='loginLeft'>
+          <div className='loginTitle'>Student User Manager</div>
+          <button className='loginButton' onClick={handleLogin}>Login</button>
+        </div>
+        <div className='loginRight'>
+          <input className='loginInput' id='loginUsername' placeholder='Username'></input>
+          <input className='loginInput' id='loginPassword' placeholder='Password'></input>
+        </div>
+      </div>
     )
   }
 
