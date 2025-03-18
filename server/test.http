@@ -25,7 +25,7 @@ Content-Type: application/json
 
 POST http://localhost:3001/api/courses/5/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTg4Njc1NiwiZXhwIjoxNzQxODkwMzU2fQ.Jgc3zzIti8UpEq8SY38pHMR_0V1KS_JZQZ92hp4zTwk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDIzMDczMzYsImV4cCI6MTc0MjMxMDkzNn0.GQ-bMgwhHuisP6PMdj_EiJWC7u6qUIy4MTkjad60cE8
 
 {
   "username": "Tyler"
