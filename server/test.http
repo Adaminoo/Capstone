@@ -5,9 +5,10 @@ Content-Type: application/json
   "username": "Tyler",
   "firstName": "Tyler",
   "lastName": "VanSickle",
-  "email": "tyleranie@test.com",
+  "email": "tylervansickle@test.com",
   "birthday": "1999-10-06",
-  "password": "Pass"
+  "password": "Pass",
+  "isAdmin": false
 }
 
 ###
@@ -16,6 +17,16 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-  "username": "TylerS",
+  "username": "Tyler",
   "password": "Pass"
+}
+
+###
+
+POST http://localhost:3001/api/courses/5/register
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTg4Njc1NiwiZXhwIjoxNzQxODkwMzU2fQ.Jgc3zzIti8UpEq8SY38pHMR_0V1KS_JZQZ92hp4zTwk
+
+{
+  "username": "Tyler"
 }

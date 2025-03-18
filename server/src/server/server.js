@@ -1,8 +1,10 @@
-const express = require('express');
-const path = require('path');
-const dotenv = require('dotenv');
-const authRoutes = require('../routes/authRoutes');
-const errorHandler = require('../middleware/errorMiddleware');
+const express = require("express");
+const path = require("path");
+const dotenv = require("dotenv");
+const authRoutes = require("../routes/authRoutes");
+const errorHandler = require("../middleware/errorMiddleware");
+const profileRoutes = require("../routes/profileRoutes"); 
+const courseRoutes = require('../routes/courseRoutes')
 
 dotenv.config();
 
@@ -12,17 +14,21 @@ app.use(express.static(path.resolve(__dirname, "../client/dist")));
 
 app.use(express.json());
 
-// Auuth Routes
-app.use('/api', authRoutes);
+// Auth Routes
+app.use("/api", authRoutes);
 
+// Profile Routes
+app.use("/api", profileRoutes);  // Profile routes should be applied here
+
+//Course Routes
+app.use('/api', courseRoutes);
+
+// Error Middleware
+app.use(errorHandler);
 
 app.get("/api/message", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
-
-// Error Thingy
-app.use(errorHandler);
-
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

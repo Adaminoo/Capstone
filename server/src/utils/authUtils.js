@@ -18,8 +18,8 @@ async function comparePassword(password, hash) {
 }
 
 // Generate Token
-function generateToken(userId) {
-  return jwt.sign({ userId }, process.env.SECRET, { expiresIn: '1h' });
+function generateToken(user_id) {
+  return jwt.sign({ user_id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 }
 
 

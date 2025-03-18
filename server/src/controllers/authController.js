@@ -72,7 +72,7 @@ exports.signup = async (req, res) => {
 
     res.status(201).json({
       message: "User created successfully",
-      userId: result.rows[0].id
+      user_id: result.rows[0].id
     });
   } catch (err) {
     console.error("Error creating user:", err);

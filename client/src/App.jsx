@@ -1,15 +1,13 @@
-// client/src/App.jsx
 
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  const [status, setStatus] = useState(null)
   const [count, setCount] = useState(0);
   const [data, setData] = useState(null);
   const [signup, setSignup] = useState({
-    username: "",
+    username: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -24,17 +22,27 @@ function App() {
       .then((data) => setData(data.message));
   }, []);
 
-  useEffect(() => {
-    fetch('/api/login')
-    .then((res) => {
-      console.log(res)
-    })
-  })
+  const handleLogin = () => {
+    const tempUser = document.getElementById('loginUsername').value
+    const tempPass = document.getElementById('loginPassword').value
+    console.log('Username: ', tempUser)
+    console.log('Password: ', tempPass)
 
-  const handleLogin = (e) => {
-    fetch('/api/login')
-    .then((res) => {
-      console.log(res)
+    const url = '/api/login'
+    fetch(url, {
+        method: "POST",
+        headers: {
+           'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: tempUser,
+          password: tempPass
+        })
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data.token)
+      setStatus(data.token)
     })
   }
 
@@ -63,6 +71,22 @@ function App() {
     }));
   }
 
+  if (!status) {
+    return (
+      <div className='login'>
+            <div>
+          <div className='title'>Student User Manager</div>
+
+              <div>Username: </div>
+            <input id='loginUsername'></input>
+            <div>Password</div>
+            <input id='loginPassword'></input>
+            </div>
+            <button onClick={handleLogin}>Login</button>
+          </div>
+    )
+  }
+
   return (
     <>
       <div className='body'>
@@ -71,6 +95,7 @@ function App() {
           <div className='links'></div>
         </div>
         <div className='bottom'>
+          
           <div className='signup'>
           <input 
             className='userInput' 
@@ -141,4 +166,3 @@ function App() {
 }
 
 export default App
-

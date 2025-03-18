@@ -5,7 +5,7 @@ When using the app, make sure to set up your `.env` file with the following conf
 
 ```
 PORT=yourPort
-SECRET='yourSecret'
+JWT_SECRET='yourSecret'
 DB_HOST='yourHost (Most likely localhost)'
 DB_USER='yourDBUser'
 DB_PASSWORD='yourDBPassword'
