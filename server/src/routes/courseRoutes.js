@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { isAuth } = require("../middleware/authMiddleware");
-const isAdmin = require("../middleware/isAdmin"); // Importing the isAdmin middleware
+const isAdmin = require("../middleware/isAdmin");
 const {
   getCoursesForUser,
   registerForCourse,
@@ -10,12 +10,10 @@ const {
   adminUnregisterUserFromCourse,
 } = require("../controllers/courseController");
 
-// User routes to get, register, and unregister from courses
-router.get("/courses", isAuth, getCoursesForUser); // Get courses the user is registered for
-router.post("/courses/:course_id/register", isAuth, registerForCourse); // Register for a course
-router.delete("/courses/:course_id/unregister", isAuth, unregisterFromCourse); // Unregister from a course
+router.get("/courses", isAuth, getCoursesForUser); 
+router.post("/courses/:course_id/register", isAuth, registerForCourse); 
+router.delete("/courses/:course_id/unregister", isAuth, unregisterFromCourse); 
 
-// Admin routes to manage user registrations for courses
 router.post(
   "/admin/courses/register/:user_id/:course_id",
   isAuth,

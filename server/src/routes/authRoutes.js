@@ -10,7 +10,6 @@ const router = express.Router();
 router.post("/login", login);
 router.post("/signup", validateSignup, handleValidationResult, signup);
 
-// Routes for ___
 
 // Export to server.js
 module.exports = router;

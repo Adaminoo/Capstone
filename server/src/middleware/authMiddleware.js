@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 const db = require("../config/db");
 
-// Authentication middleware to check if user is logged in
 const isAuth = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1]; // Get token from Authorization header
 
@@ -11,14 +10,13 @@ const isAuth = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user_id = decoded.user_id; // Store user_id in request for later use
+    req.user_id = decoded.user_id;
     next();
   } catch (error) {
     return res.status(401).json({ message: "Invalid token", error });
   }
 };
 
-// Admin middleware to check if the user is an admin
 const isAdmin = async (req, res, next) => {
   const user_id = req.user_id;
 

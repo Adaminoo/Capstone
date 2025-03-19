@@ -8,11 +8,11 @@ const {
   deleteProfile,
 } = require("../controllers/profileController");
 
-router.get("/profile", isAuth, getProfile); // Get the authenticated user's profile
-router.put("/profile", isAuth, updateProfile); // Update the authenticated user's profile
-router.delete("/profile", isAuth, deleteProfile); // Delete the authenticated user's profile (self-delete)
+router.get("/profile", isAuth, getProfile); 
+router.put("/profile", isAuth, updateProfile);
+router.delete("/profile", isAuth, deleteProfile); 
 
-router.delete("/profile/:id", isAuth, isAdmin, deleteProfile); // Admin can delete any user by ID
-router.put("/profile/:id", isAuth, isAdmin, updateProfile); // Admin can update any user's profile by ID
+router.delete("/profile/:id", isAuth, isAdmin, deleteProfile); 
+router.put("/profile/:id", isAuth, isAdmin, updateProfile); 
 
 module.exports = router;
