@@ -3,9 +3,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [status, setStatus] = useState(null)
-  const [count, setCount] = useState(0);
-  const [data, setData] = useState(null);
+  const [status, setStatus] = useState('loginPage')
   const [signup, setSignup] = useState({
     username: '',
     firstName: '',
@@ -15,12 +13,6 @@ function App() {
     password: '',
     isAdmin: false
   })
-
-  useEffect(() => {
-    fetch("/api/message")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
 
   const handleLogin = () => {
     const tempUser = document.getElementById('loginUsername').value
@@ -42,8 +34,12 @@ function App() {
     .then((res) => res.json())
     .then((data) => {
       console.log(data.token)
-      setStatus(data.token)
+      setStatus('homePage')
     })
+  }
+
+  const handlePage = () => {
+
   }
 
   {/*function handleChange({ target }) {
@@ -71,18 +67,41 @@ function App() {
     }));
   }
 
-  if (!status) {
+  if (status == 'loginPage') {
     return (
       <div className='login'>
         <div className='loginLeft'>
           <div className='loginTitle'>Student User Manager</div>
-          <button className='loginButton' onClick={handleLogin}>Login</button>
+          <div id='lbs'>
+            <button className='loginButton' onClick={handleLogin}>Login</button>
+            <button className='signupButton' onClick={() => setStatus('signupPage')}>Signup</button>
+          </div>
         </div>
         <div className='loginRight'>
           <input className='loginInput' id='loginUsername' placeholder='Username'></input>
           <input className='loginInput' id='loginPassword' placeholder='Password'></input>
         </div>
       </div>
+    )
+  }
+
+  if (status == 'signupPage') {
+    return (
+      <>
+        <div className='login'>
+        <div className='loginLeft'>
+          <div className='loginTitle'>Student User Manager</div>
+          <div id='lbs'>
+            <button className='loginButton' onClick={handleLogin}>Login</button>
+            <button className='signupButton' onClick={() => setStatus('signupPage')}>Signup</button>
+          </div>
+        </div>
+        <div className='loginRight'>
+          <input className='loginInput' id='loginUsername' placeholder='Username'></input>
+          <input className='loginInput' id='loginPassword' placeholder='Password'></input>
+        </div>
+      </div>
+      </>
     )
   }
 
@@ -151,10 +170,6 @@ function App() {
         </div>
       </div>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-         <h1>{!data ? "Loading..." : data}</h1>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
