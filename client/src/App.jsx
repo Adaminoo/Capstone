@@ -52,8 +52,11 @@ function App() {
       ...prevSignup,
       [name]: value
     }));
-    console.log(signup)
   };
+
+  const handleSignup = (e) => {
+    
+  }
   
   const handleCheck = (e) => {
     const { name, checked } = e.target;
@@ -91,7 +94,7 @@ function App() {
           <div className='signupBottom'>
           <input 
             id='username'
-            className='userInput' 
+            className='userInput'
             name='username'
             placeholder='Username'
             defaultValue={signup.username}
