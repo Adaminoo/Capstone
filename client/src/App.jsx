@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [status, setStatus] = useState('signupPage')
+  const [status, setStatus] = useState('loginPage')
   const [signup, setSignup] = useState({
     username: '',
     firstName: '',
@@ -54,8 +54,36 @@ function App() {
     }));
   };
 
-  const handleSignup = (e) => {
-    
+  // const handleSignup = (e) => {
+  //   fetch ("/signup", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(signup)
+  //   });
+
+  // }
+
+  const handleSignup = async () => {
+    console.log(signup)
+    try {
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(signup)
+      });
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+      const data = await response.json();
+      console.log('Signup successful', data);
+      return data;
+    } catch (error) {
+      console.error('Signup failed:' , error);
+    }
   }
   
   const handleCheck = (e) => {
@@ -71,7 +99,7 @@ function App() {
       <div className='login'>
         <div className='loginLeft'>
           <div className='loginTitle'>Student User Manager</div>
-          <div id='lbs'>
+          <div className='lbs'>
             <button className='loginButton' onClick={handleLogin}>Login</button>
             <button className='signupButton' onClick={() => setStatus('signupPage')}>Signup</button>
           </div>
@@ -100,6 +128,14 @@ function App() {
             defaultValue={signup.username}
             onChange={handleChange}
           ></input>
+          <input 
+              id='password'
+              className='userInput' 
+              name='password'
+              placeholder='Password'
+              defaultValue={signup.password}
+              onChange={handleChange}
+            ></input>
             <input 
               id='firstName'
               className='userInput' 
@@ -133,14 +169,7 @@ function App() {
               defaultValue={signup.birthday}
               onChange={handleChange}
             ></input>
-            <input 
-              id='password'
-              className='userInput' 
-              name='password'
-              placeholder='Password'
-              defaultValue={signup.password}
-              onChange={handleChange}
-            ></input>
+            
             {/* <input 
              className='userInput' 
              type='checkbox'
@@ -150,6 +179,10 @@ function App() {
               checked={signup.isAdmin}
               onChange={handleCheck}
             ></input> */}
+          </div>
+          <div className='lbs'>
+            <button className='confSignupButton' onClick={handleSignup}>Signup</button>
+            <button className='signupButton' onClick={() => setStatus('loginPage')}>Login</button>
           </div>
         </div>
       </>

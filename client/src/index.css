@@ -68,6 +68,7 @@ button:focus-visible {
   justify-content: center;
   width:500px;
   height:720px;
+  position: relative;
 }
 
 .loginLeft, .loginRight {
@@ -92,7 +93,7 @@ button:focus-visible {
   font-weight:bold;
 }
 
-#lbs {
+.lbs {
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -100,17 +101,21 @@ button:focus-visible {
   justify-content: space-between;
 }
 
-.loginButton, .signupButton {
+.loginButton, .signupButton, .confSignupButton {
   background-color: #74a0ff;
   color:white;
-  width:100px;
+  width:120px;
+}
+
+.confSignupButton {
+  margin:20px;
 }
 
 .signupButton {
-  width: 120px;
+  background-color: #a2bffe;
 }
 
-.loginInput {
+.loginInput, .userInput {
   width:240px;
   height:40px;
   font-size:18px;
@@ -119,3 +124,7 @@ button:focus-visible {
   border-radius:10px;
 }
 
+.userInput {
+  width: 200px;
+  margin: 20px 5px;
+}
