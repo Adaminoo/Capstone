@@ -30,3 +30,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDIzMTAxM
 {
   "username": "Bubbles"
 }
+
+###
+
+GET http://localhost:3001/api/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDQwMzk3ODEsImV4cCI6MTc0NDA0MzM4MX0.FhFMqA6OUsiQsD4zxM-x5GaLF552QPQZMty-ptkA6S8
