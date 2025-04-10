@@ -1,8 +1,45 @@
-
 import { useState, useEffect } from 'react'
 import './App.css'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import { Routes, Route, Link, Navigate, useNavigate } from "react-router";
+
 
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('authToken') == undefined) {
+      navigate("/login")
+    }
+  }, [navigate])
+
+  
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken')
+    navigate("/login")
+  }
+
+  return (
+    <>
+      <h1>React Router</h1>
+      {localStorage.getItem('authToken')}
+      <Navigation />
+
+      
+        <button onClick={handleLogout}>Sign Out</button>
+      
+
+      <Routes>
+        <Route path="home" element={<Home />} />
+        <Route path="login" element={<Login />} />
+      </Routes>
+    </>
+  )
+
+  
+  {/* 
   const [status, setStatus] = useState('loginPage')
   const [signup, setSignup] = useState({
     username: '',
@@ -33,18 +70,17 @@ function App() {
     })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.token)
-      setStatus('homePage')
+      console.log(data)
+      if (data.token !== undefined) {
+        localStorage.setItem('authToken', data.token)
+        localStorage.setItem('currentUser', tempUser)
+        setStatus('homePage')
+      }
+    })
+    .catch((err) => {
+      console.error('Login error: ', err)
     })
   }
-
-  {/*function handleChange({ target }) {
-    console.log(target.value, target.name)
-    const _signup = { ...signup, [name]: value };
-    setSignup(target.name, target.value);
-    console.log(signup)
-
-  }*/}
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,17 +89,6 @@ function App() {
       [name]: value
     }));
   };
-
-  // const handleSignup = (e) => {
-  //   fetch ("/signup", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(signup)
-  //   });
-
-  // }
 
   const handleSignup = async () => {
     console.log(signup)
@@ -86,13 +111,13 @@ function App() {
     }
   }
   
-  const handleCheck = (e) => {
-    const { name, checked } = e.target;
-    setSignup(prevSignup => ({
-      ...prevSignup,
-      [name]: checked 
-    }));
-  }
+  // const handleCheck = (e) => {
+  //   const { name, checked } = e.target;
+  //   setSignup(prevSignup => ({
+  //     ...prevSignup,
+  //     [name]: checked 
+  //   }));
+  // }
 
   if (status == 'loginPage') {
     return (
@@ -178,15 +203,19 @@ function App() {
               
               checked={signup.isAdmin}
               onChange={handleCheck}
-            ></input> */}
+            ></input> error right here smile put the comment back if you ever use this code again
           </div>
           <div className='lbs'>
             <button className='confSignupButton' onClick={handleSignup}>Signup</button>
             <button className='signupButton' onClick={() => setStatus('loginPage')}>Login</button>
           </div>
-        </div>
+        </div> 
       </>
     )
+  }
+
+  if (status == 'homePage') {
+    return <HomePage />
   }
 
   return (
@@ -206,6 +235,21 @@ function App() {
       </div>
 
     </>
+  )
+  */}
+}
+
+const Navigation = () => {
+  return (
+    <nav
+      style={{
+      borderBottom: "solid 1px",
+      paddingBottom: "1rem",
+    }}
+    >
+      <Link to="/home">Home</Link>
+      <Link to="/login">Login</Link>
+    </nav>
   )
 }
 
