@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+#signoutButton {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}

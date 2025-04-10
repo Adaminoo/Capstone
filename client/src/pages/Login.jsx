@@ -32,7 +32,7 @@ function Login() {
             console.log(data.token)
             localStorage.setItem('authToken', data.token)
             localStorage.setItem('currentUser', tempUser)
-            navigate("/")
+            navigate("/home")
           }
         })
         .catch((err) => {

@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem('authToken') == undefined) {
-      navigate("/login")
+      navigate("/")
     }
   }, [navigate])
 
@@ -18,23 +18,21 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem('authToken')
-    navigate("/login")
+    navigate("/")
   }
 
   return (
     <>
-      <h1>React Router</h1>
       {localStorage.getItem('authToken')}
-      <Navigation />
 
       
-        <button onClick={handleLogout}>Sign Out</button>
+        <button id='signoutButton' onClick={handleLogout}>Sign Out</button>
       
-
-      <Routes>
-        <Route path="home" element={<Home />} />
-        <Route path="login" element={<Login />} />
-      </Routes>
+            <Routes>
+                <Route path="home" element={<Home />} />
+                <Route path="/" element={<Login />} />
+            </Routes>
+      
     </>
   )
 
@@ -248,7 +246,7 @@ const Navigation = () => {
     }}
     >
       <Link to="/home">Home</Link>
-      <Link to="/login">Login</Link>
+      <Link to="/">Login</Link>
     </nav>
   )
 }

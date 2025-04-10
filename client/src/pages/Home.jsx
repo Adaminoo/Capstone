@@ -10,7 +10,7 @@ function Home() {
   if (!authToken) {
     console.log('test')
     return (
-    <Navigate to="/login"/>
+    <Navigate to="/"/>
 
     )
   }
