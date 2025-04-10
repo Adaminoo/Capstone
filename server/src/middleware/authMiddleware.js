@@ -10,10 +10,19 @@ const isAuth = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user_id = decoded.user_id;
-    next();
+
+    // Check if decoded token contains user_id and attach it to request
+    if (decoded && decoded.user_id) {
+      req.user_id = decoded.user_id;
+      console.log("Decoded Token:", decoded); 
+      console.log("User ID from token:", req.user_id); 
+      next();
+    } else {
+      return res.status(400).json({ message: "Invalid token structure (missing user_id)" });
+    }
   } catch (error) {
-    return res.status(401).json({ message: "Invalid token", error });
+    console.error("JWT Error:", error);
+    return res.status(401).json({ message: "Invalid token", error: error.message });
   }
 };
 

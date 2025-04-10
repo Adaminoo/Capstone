@@ -10,21 +10,24 @@ const {
   adminUnregisterUserFromCourse,
 } = require("../controllers/courseController");
 
-router.get("/courses", isAuth, getCoursesForUser); 
-router.post("/courses/:course_id/register", isAuth, registerForCourse); 
-router.delete("/courses/:course_id/unregister", isAuth, unregisterFromCourse); 
+// User routes
+router.get("/courses", isAuth, getCoursesForUser); // Get all courses for authenticated user
+router.post("/courses/:course_id/register", isAuth, registerForCourse); // Register user for a course
+router.delete("/courses/:course_id/unregister", isAuth, unregisterFromCourse); // Unregister user from a course
 
+// Admin routes
 router.post(
-  "/admin/courses/register/:user_id/:course_id",
+  "/admin/courses/register/:user_id/:course_id", // Admin register user for course
   isAuth,
   isAdmin,
   adminRegisterUserForCourse
-); // Admin registers a user
+);
+
 router.delete(
-  "/admin/courses/unregister/:user_id/:course_id",
+  "/admin/courses/unregister/:user_id/:course_id", // Admin unregister user from course
   isAuth,
   isAdmin,
   adminUnregisterUserFromCourse
-); // Admin unregisters a user
+);
 
 module.exports = router;

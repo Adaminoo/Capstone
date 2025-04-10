@@ -2,10 +2,10 @@ POST  http://localhost:3001/api/signup
 Content-Type: application/json
 
 {
-  "username": "Bubbles",
+  "username": "BubbleV",
   "firstName": "Tyler",
   "lastName": "VanSickle",
-  "email": "Bubbles@test.com",
+  "email": "BubbleV@test.com",
   "birthday": "1999-10-06",
   "password": "Pass",
   "isAdmin": true
@@ -25,7 +25,7 @@ Content-Type: application/json
 
 POST http://localhost:3001/api/courses/1/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDIzMTAxMDgsImV4cCI6MTc0MjMxMzcwOH0.VYullS58aTvTs3tKahCeiu3ALx5y2H0zIVrkXInmL-M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE3NDQwNDk1MTYsImV4cCI6MTc0NDA1MzExNn0.Nr_D3JA0g_eKgbLTWc1MwhKMoQ4-l-zuztXHvGdxRkQ
 
 {
   "username": "Bubbles"
@@ -35,4 +35,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDIzMTAxM
 
 GET http://localhost:3001/api/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDQwMzk3ODEsImV4cCI6MTc0NDA0MzM4MX0.FhFMqA6OUsiQsD4zxM-x5GaLF552QPQZMty-ptkA6S8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE3NDQwNDk0OTUsImV4cCI6MTc0NDA1MzA5NX0.QRw72zPn54Jao8ivsfGCAqjoChkCZ4pWxHKkhXxJs7Y
