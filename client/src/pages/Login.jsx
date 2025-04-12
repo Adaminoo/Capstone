@@ -43,7 +43,7 @@ function Login() {
     return (
         <div className='login'>
           <div className='loginLeft'>
-            <div className='loginTitle'>Student User Manager</div>
+            <div className='loginTitle'>Welcome to <span style={{fontWeight: 'bold'}} >Student Portal</span></div>
             <div className='lbs'>
               <button className='loginButton' onClick={handleLogin}>Login</button>
               <button className='signupButton' onClick={() => setStatus('signupPage')}>Signup</button>

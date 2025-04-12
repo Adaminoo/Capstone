@@ -1,12 +1,10 @@
 import React from 'react';
 import { useState, useEffect, useContext, createContext } from 'react';
 import { Navigate } from 'react-router';
-import './Home.css';
+import Navbar from '../components/Navbar'
 
 function Home() {
-
     const authToken = localStorage.getItem("authToken")
-    console.log("authToken value:", authToken, typeof authToken)
   if (!authToken) {
     console.log('test')
     return (
@@ -56,15 +54,10 @@ function Home() {
 
     return (
         <>
+            <Navbar/>
             <div className='body'>
-                <div className='left'>
-                    <h1>Welcome</h1>
-                </div>
-                <div className='right'>
-                    <h1>hi</h1>
-                </div>
+                
             </div>
-            
         </>
     )
 }

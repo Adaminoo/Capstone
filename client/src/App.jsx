@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Profile from './pages/Profile'
+import Courses from './pages/Courses'
+import Admin from './pages/Admin'
 import { Routes, Route, Link, Navigate, useNavigate } from "react-router";
-
 
 function App() {
   const navigate = useNavigate();
@@ -11,32 +13,22 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('authToken') == undefined) {
       navigate("/")
+      console.error("Token error, value: ", localStorage.getItem('authToken'))
     }
   }, [navigate])
 
-  
-
-  const handleLogout = () => {
-    localStorage.removeItem('authToken')
-    navigate("/")
-  }
-
   return (
-    <>
-      {localStorage.getItem('authToken')}
-
-      
-        <button id='signoutButton' onClick={handleLogout}>Sign Out</button>
-      
+    <>      
             <Routes>
-                <Route path="home" element={<Home />} />
-                <Route path="/" element={<Login />} />
+                <Route path="/" element={<Login/>}/>
+                <Route path="home" element={<Home/>}/>
+                <Route path="courses" element={<Courses/>}/>
+                <Route path="profile" element={<Profile/>}/>
+                <Route path="admin" element={<Admin/>}/>
             </Routes>
-      
     </>
   )
 
-  
   {/* 
   const [status, setStatus] = useState('loginPage')
   const [signup, setSignup] = useState({
@@ -235,20 +227,6 @@ function App() {
     </>
   )
   */}
-}
-
-const Navigation = () => {
-  return (
-    <nav
-      style={{
-      borderBottom: "solid 1px",
-      paddingBottom: "1rem",
-    }}
-    >
-      <Link to="/home">Home</Link>
-      <Link to="/">Login</Link>
-    </nav>
-  )
 }
 
 export default App

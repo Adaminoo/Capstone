@@ -72,25 +72,18 @@ button:focus-visible {
 }
 
 .loginLeft, .loginRight {
-  padding:80px;
   display:flex;
   flex-direction: column;
-}
-
-.loginLeft {
-  padding-right:40px;
-  justify-content: space-around;
   align-items: center;
-}
-
-.loginRight {
-  padding-left:40px;
+  justify-content: center;
+  width:50%;
   justify-content: space-evenly;
 }
 
 .loginTitle {
   font-size: 30px;
-  font-weight:bold;
+  width:300px;
+  margin:20px;
 }
 
 .lbs {
@@ -127,4 +120,57 @@ button:focus-visible {
 .userInput {
   width: 200px;
   margin: 20px 5px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(123, 0, 0);
+}
+
+.navigation {
+  height:100%;
+  width:80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.titleLogo {
+  display: flex;
+  align-items: center;
+}
+
+#title {
+  color: rgb(123, 0, 0);
+}
+
+#logo {
+  width:100px;
+}
+
+.navbarButtons {
+  width: 40%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(123, 0, 0);
+  font-weight: bold;
+}
+
+#signoutButton {
+  height: 50px;
+  background-color: rgb(123, 0, 0);
+  color: white;
+  font-weight: bold;
 }
