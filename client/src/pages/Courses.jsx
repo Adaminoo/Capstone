@@ -7,7 +7,9 @@ function Courses() {
     return (
         <>
             <Navbar/>
-            <h1>Courses</h1>
+            <div className='body'>
+                <h1>Courses</h1>
+            </div>
         </>
     )
 }

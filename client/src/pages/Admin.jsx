@@ -6,8 +6,9 @@ function Admin() {
     return (
         <>
             <Navbar/>
-
-            <h1>Admin</h1>
+            <div className='body'>
+                <h1>Admin</h1>
+            </div>
         </>
     )
 }

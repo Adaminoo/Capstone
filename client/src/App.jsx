@@ -9,7 +9,8 @@ import { Routes, Route, Link, Navigate, useNavigate } from "react-router";
 
 function App() {
   const navigate = useNavigate();
-
+  console.log(localStorage.getItem('authToken'));
+  console.log(localStorage.getItem('currentUser'));
   useEffect(() => {
     if (localStorage.getItem('authToken') == undefined) {
       navigate("/")

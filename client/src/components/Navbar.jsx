@@ -5,10 +5,21 @@ import Logo from '../assets/images/school-logo-design-template-free-vector.jpg'
 function Navbar() {
 
   const navigate = useNavigate();
-
+  const currentUser = localStorage.getItem('currentUser');
   const handleLogout = () => {
     localStorage.removeItem('authToken')
     navigate("/")
+  }
+
+  const Navigation = () => {
+    return (
+      <div className="navigation">
+        <Link to="/home">Home</Link>
+        <Link to="/courses">Courses</Link>
+        <Link to="/profile">{currentUser}'s Profile</Link>
+        <Link to="/admin">Admin</Link>
+      </div>
+    )
   }
 
     return (
@@ -16,7 +27,7 @@ function Navbar() {
             <div className="navbar">
               <div className="titleLogo">
                 <img src={Logo} id="logo" />
-                <div id="title"><span style={{fontWeight: "bold"}}>Pinnacle</span><br/> Tech Academy</div>
+                <div id="title"><span style={{fontWeight: "bold", fontSize: "24px"}}>Pinnacle</span><br/> Technical Academy</div>
               </div>
               <div className="navbarButtons">
                 <Navigation />
@@ -28,16 +39,7 @@ function Navbar() {
 }
 
 
-const Navigation = () => {
-    return (
-      <div className="navigation">
-        <Link to="/home">Home</Link>
-        <Link to="/courses">Courses</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/admin">Admin</Link>
-      </div>
-    )
-  }
+
   
 
 export default Navbar

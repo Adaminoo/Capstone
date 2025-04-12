@@ -1,9 +1,12 @@
 import React from 'react';
 import { useState, useEffect, useContext, createContext } from 'react';
-import { Navigate } from 'react-router';
+import { Navigate, useNavigate, Link } from 'react-router';
 import Navbar from '../components/Navbar'
+import Background from '../assets/images/ARC_Website_Content_Study_Groups.jpeg'
+import RightArrow from '../assets/icons/arrow_forward_ios_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png'
 
 function Home() {
+    const navigate = useNavigate();
     const authToken = localStorage.getItem("authToken")
   if (!authToken) {
     console.log('test')
@@ -56,7 +59,14 @@ function Home() {
         <>
             <Navbar/>
             <div className='body'>
-                
+                <div className='home'>
+                    <img src={Background} className='homeBackground'/>
+                    <div className='homeText'>
+                        <div className='homeTitle'>PINNACLE TECHNOLOGY ACADEMY</div>
+                        <div style={{marginBottom: "10px"}} >Developing real-world skills. Shaping bright futures. Driving tomorrow's innovation.</div>
+                        <Link className='homeNavButton' to={"/courses"} >Want to see our courses?<img src={RightArrow} /></Link>
+                    </div>
+                </div>
             </div>
         </>
     )

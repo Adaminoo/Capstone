@@ -7,7 +7,10 @@ function Profile() {
     return (
         <>
             <Navbar/>        
-            <h1>Profile</h1>
+
+            <div className='body'>
+                <h1>Student Portal</h1>
+            </div>
         </>
     )
 }
