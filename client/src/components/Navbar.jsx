@@ -16,7 +16,7 @@ function Navbar() {
       <div className="navigation">
         <Link to="/home">Home</Link>
         <Link to="/courses">Courses</Link>
-        <Link to="/profile">{currentUser}'s Profile</Link>
+        <Link to="/profile">Manage Profile</Link>
         <Link to="/admin">Admin</Link>
       </div>
     )

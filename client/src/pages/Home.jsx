@@ -15,10 +15,6 @@ function Home() {
 
     )
   }
-  const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
 //   useEffect(() => {
 //     const fetchUserProfile = () => {
 //         const token = localStorage.getItem('authToken');

@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Routes, Route, Link, Navigate, useNavigate } fr
 
 function Login() {
     const navigate = useNavigate();
-
     
     const [tokenStatus, setTokenStatus] = useState(false)
 
@@ -47,7 +46,7 @@ function Login() {
             <div className='loginTitle'>Welcome to <span style={{fontWeight: 'bold'}} >Student Portal</span></div>
             <div className='lbs'>
               <button className='loginButton' onClick={handleLogin}>Login</button>
-              <button className='signupButton' onClick={() => setStatus('signupPage')}>Signup</button>
+              <Link className='signupButton' to={"signup"}>Signup</Link>
             </div>
           </div>
           <div className='loginRight'>

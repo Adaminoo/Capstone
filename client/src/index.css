@@ -26,10 +26,6 @@ h1 {
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -66,6 +62,7 @@ button:focus-visible {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   width:500px;
   height:720px;
   position: relative;
@@ -80,32 +77,54 @@ button:focus-visible {
   justify-content: space-evenly;
 }
 
-.loginTitle {
+.loginTitle, .signupTitle {
   font-size: 30px;
   width:300px;
   margin:20px;
 }
 
+.signupTop {
+  display: flex;
+  justify-content: center;
+}
+
+.signupBottom {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.signupTitle {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
 .lbs {
   display:flex;
-  flex-direction: column;
   align-items: center;
-  height:100px;
+  width: 260px;
   justify-content: space-between;
+  margin-top: 80px;
 }
 
-.loginButton, .signupButton, .confSignupButton {
-  background-color: rgb(0, 0, 123);
-  color:white;
-  width:120px;
+.confSignupButton, .signupButton, .loginButton {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 8px;
 }
 
-.confSignupButton {
-  margin:20px;
+.confSignupButton, .loginButton {
+  background-color: rgb(43, 43, 193);
+  height: 49px;
+  width: 100px;
 }
 
 .signupButton {
-  background-color: rgb(49, 52, 255);
+  background-color: rgb(0, 0, 123);
 }
 
 .loginInput, .userInput {
@@ -176,6 +195,8 @@ a {
   background-color: rgb(0, 0, 123);
   color: white;
   font-weight: bold;
+  font-size: 18px;
+  width: 100px;
 }
 
 .body {

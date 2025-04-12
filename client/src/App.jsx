@@ -5,14 +5,16 @@ import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Courses from './pages/Courses'
 import Admin from './pages/Admin'
-import { Routes, Route, Link, Navigate, useNavigate } from "react-router";
+import Signup from './pages/Signup'
+import { Routes, Route, Link, Navigate, useNavigate, useLocation } from "react-router";
 
 function App() {
   const navigate = useNavigate();
-  console.log(localStorage.getItem('authToken'));
-  console.log(localStorage.getItem('currentUser'));
+  const location = useLocation();
   useEffect(() => {
-    if (localStorage.getItem('authToken') == undefined) {
+    if (location.pathname == "/signup") {
+      return
+    } else if (localStorage.getItem('authToken') == undefined) {
       navigate("/")
       console.error("Token error, value: ", localStorage.getItem('authToken'))
     }
@@ -26,21 +28,14 @@ function App() {
                 <Route path="courses" element={<Courses/>}/>
                 <Route path="profile" element={<Profile/>}/>
                 <Route path="admin" element={<Admin/>}/>
+                <Route path="signup" element={<Signup/>}/>
             </Routes>
     </>
   )
 
   {/* 
   const [status, setStatus] = useState('loginPage')
-  const [signup, setSignup] = useState({
-    username: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    birthday: '',
-    password: '',
-    isAdmin: false
-  })
+  
 
   const handleLogin = () => {
     const tempUser = document.getElementById('loginUsername').value
@@ -73,34 +68,9 @@ function App() {
     })
   }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setSignup(prevSignup => ({
-      ...prevSignup,
-      [name]: value
-    }));
-  };
+  
 
-  const handleSignup = async () => {
-    console.log(signup)
-    try {
-      const response = await fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(signup)
-      });
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`);
-      }
-      const data = await response.json();
-      console.log('Signup successful', data);
-      return data;
-    } catch (error) {
-      console.error('Signup failed:' , error);
-    }
-  }
+  
   
   // const handleCheck = (e) => {
   //   const { name, checked } = e.target;
@@ -132,74 +102,7 @@ function App() {
     return (
       <>
         <div className='signup'>
-          <div className='signupTop'>
-            <div className='loginTitle'>Student User Manager</div>
-          </div>
-          <div className='signupBottom'>
-          <input 
-            id='username'
-            className='userInput'
-            name='username'
-            placeholder='Username'
-            defaultValue={signup.username}
-            onChange={handleChange}
-          ></input>
-          <input 
-              id='password'
-              className='userInput' 
-              name='password'
-              placeholder='Password'
-              defaultValue={signup.password}
-              onChange={handleChange}
-            ></input>
-            <input 
-              id='firstName'
-              className='userInput' 
-              name='firstName'
-              placeholder='First Name'
-              defaultValue={signup.firstName}
-              onChange={handleChange}
-
-            ></input>
-            <input 
-             id='lastName'
-             className='userInput' 
-             name='lastName'
-             placeholder='Last Name'
-             defaultValue={signup.lastName}
-             onChange={handleChange}
-            ></input>
-            <input 
-              id='email'
-              className='userInput' 
-              name='email'
-              placeholder='Email Address'
-              defaultValue={signup.email}
-              onChange={handleChange}
-            ></input>
-            <input 
-              id='birthday'
-              className='userInput' 
-              name='birthday'
-              placeholder='Date of Birth'
-              defaultValue={signup.birthday}
-              onChange={handleChange}
-            ></input>
-            
-            {/* <input 
-             className='userInput' 
-             type='checkbox'
-              id='isAdmin'
-              name='isAdmin'
-              
-              checked={signup.isAdmin}
-              onChange={handleCheck}
-            ></input> error right here smile put the comment back if you ever use this code again
-          </div>
-          <div className='lbs'>
-            <button className='confSignupButton' onClick={handleSignup}>Signup</button>
-            <button className='signupButton' onClick={() => setStatus('loginPage')}>Login</button>
-          </div>
+          
         </div> 
       </>
     )
