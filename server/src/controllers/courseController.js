@@ -57,21 +57,21 @@ const registerForCourse = async (req, res) => {
     }
 
     // Check course capacity
-    const capacityQuery =
-      "SELECT maximum_capacity, COUNT(*) AS current_registration FROM user_courses WHERE course_id = $1 GROUP BY course_id";
-    const capacityResult = await db.query(capacityQuery, [course_id]);
+    // const capacityQuery =
+    //   "SELECT maximum_capacity, COUNT(*) AS current_registration FROM user_courses WHERE course_id = $1 GROUP BY course_id";
+    // const capacityResult = await db.query(capacityQuery, [course_id]);
 
-    let courseCapacity = null;
-    let currentRegistrationCount = 0;
+    // let courseCapacity = null;
+    // let currentRegistrationCount = 0;
 
-    if (capacityResult.rows.length > 0) {
-      courseCapacity = capacityResult.rows[0].maximum_capacity;
-      currentRegistrationCount = capacityResult.rows[0].current_registration;
-    }
+    // if (capacityResult.rows.length > 0) {
+    //   courseCapacity = capacityResult.rows[0].maximum_capacity;
+    //   currentRegistrationCount = capacityResult.rows[0].current_registration;
+    // }
 
-    if (currentRegistrationCount >= courseCapacity) {
-      return res.status(400).json({ message: "Course is full, cannot register" });
-    }
+    // if (currentRegistrationCount >= courseCapacity) {
+    //   return res.status(400).json({ message: "Course is full, cannot register" });
+    // }
 
     // Register the user for the course
     const insertQuery =

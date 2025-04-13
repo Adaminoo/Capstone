@@ -25,7 +25,7 @@ Content-Type: application/json
 
 POST http://localhost:3001/api/courses/1/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE3NDQwNDk1MTYsImV4cCI6MTc0NDA1MzExNn0.Nr_D3JA0g_eKgbLTWc1MwhKMoQ4-l-zuztXHvGdxRkQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE3NDQyMDYwNTIsImV4cCI6MTc0NDIwOTY1Mn0.hz_ktKnOn5Y_aQzqRaIR2QhcVvp1uRjcqMAeYwa0s8M
 
 {
   "username": "Bubbles"
@@ -35,4 +35,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpY
 
 GET http://localhost:3001/api/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJpYXQiOjE3NDQ0ODg5NjEsImV4cCI6MTc0NDQ5MjU2MX0.AUiT0Prns9KUU6oWTE0b2FZKdy5JdHDzY389n_GiQNc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE3NDQwNDk0OTUsImV4cCI6MTc0NDA1MzA5NX0.QRw72zPn54Jao8ivsfGCAqjoChkCZ4pWxHKkhXxJs7Y
