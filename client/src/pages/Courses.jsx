@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 
 function Courses() {
 
+    console.log(localStorage.getItem('currentUser'))
 
     return (
         <>

@@ -4,8 +4,6 @@ import {BrowserRouter as Router, Routes, Route, Link, Navigate, useNavigate } fr
 
 function Login() {
     const navigate = useNavigate();
-    
-    const [tokenStatus, setTokenStatus] = useState(false)
 
     const handleLogin = () => {
         const tempUser = document.getElementById('loginUsername').value
@@ -26,9 +24,7 @@ function Login() {
         })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
           if (data.token !== undefined) {
-            console.log(data.token)
             localStorage.setItem('authToken', data.token)
             localStorage.setItem('currentUser', tempUser)
             navigate("/home")
@@ -37,7 +33,10 @@ function Login() {
         .catch((err) => {
           console.error('Login error: ', err)
         })
-      }
+        const token = localStorage.getItem('authToken')
+        console.log(localStorage.getItem('authToken'))
+        
+    }
 
     return (
       <div className='body'>

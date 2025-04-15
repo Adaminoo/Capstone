@@ -6,15 +6,28 @@ import Background from '../assets/images/ARC_Website_Content_Study_Groups.jpeg'
 import RightArrow from '../assets/icons/arrow_forward_ios_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png'
 
 function Home() {
+    const [currentUser, setCurrentUser] = useState({})
     const navigate = useNavigate();
     const authToken = localStorage.getItem("authToken")
   if (!authToken) {
     console.log('test')
     return (
     <Navigate to="/"/>
-
     )
   }
+  useEffect(() => {
+    fetch("/api/profile", {
+        method: "GET",
+        headers: {'Content-Type' : 'application/json', 'Authorization' : `Bearer ${authToken}` },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        localStorage.setItem('currentUser', JSON.stringify(data));
+        const storedUser = localStorage.getItem('currentUser')
+        setCurrentUser(JSON.parse(storedUser))
+    })
+  }, [])
+    
 //   useEffect(() => {
 //     const fetchUserProfile = () => {
 //         const token = localStorage.getItem('authToken');
