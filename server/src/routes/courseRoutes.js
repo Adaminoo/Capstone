@@ -8,12 +8,14 @@ const {
   unregisterFromCourse,
   adminRegisterUserForCourse,
   adminUnregisterUserFromCourse,
+  getAllCourses,
 } = require("../controllers/courseController");
 
 // User routes
 router.get("/courses", isAuth, getCoursesForUser); // Get all courses for authenticated user
 router.post("/courses/:course_id/register", isAuth, registerForCourse); // Register user for a course
 router.delete("/courses/:course_id/unregister", isAuth, unregisterFromCourse); // Unregister user from a course
+router.get("/allcourses", isAuth, getAllCourses); // Get a list of all courses - Adam 
 
 // Admin routes
 router.post(

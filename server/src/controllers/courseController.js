@@ -20,6 +20,19 @@ const checkUserRegistration = async (user_id, course_id) => {
   return result.rows[0].count > 0;
 };
 
+const getAllCourses = async (req, res) => {
+  const query = `
+  SELECT string_id, title, description FROM courses`;
+  try {
+    console.log('hi')
+    const result = await db.query(query)
+    res.json(result.rows);
+  } catch (err) {
+    console.error("Error in getAllCourses: ", err);
+    return res.status(500).json({ message: "Database error"});
+  }
+}
+
 // Get courses for the authenticated user
 const getCoursesForUser = async (req, res) => {
   const user_id = req.user_id;
@@ -179,4 +192,5 @@ module.exports = {
   unregisterFromCourse,
   adminRegisterUserForCourse,
   adminUnregisterUserFromCourse,
+  getAllCourses,
 };
