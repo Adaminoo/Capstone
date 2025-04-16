@@ -33,7 +33,7 @@ const getProfile = async (req, res) => {
 
 
 // Update Profile
-const updateProfile = (req, res) => {
+const updateProfile = async (req, res) => {
     const userId = req.userId;
     const targetUserId = req.params.id || userId;
 
@@ -43,40 +43,46 @@ const updateProfile = (req, res) => {
 
     const { firstName, lastName, email, birthday } = req.body;
 
-    db.query(
-        'UPDATE users SET firstName = ?, lastName = ?, email = ?, birthday = ? WHERE id = ?',
-        [firstName, lastName, email, birthday, targetUserId],
-        (err, results) => {
-            if (err) {
-                return res.status(500).json({ message: 'Database error' });
-            }
-            if (results.affectedRows === 0) {
-                return res.status(404).json({ message: 'User not found' });
-            }
-            res.json({ message: 'Profile updated successfully' });
+    try {
+        const result = await db.query(
+            'UPDATE users SET firstName = $1, lastName = $2, email = $3, birthday = $4 WHERE user_id = $5 RETURNING *',
+            [firstName, lastName, email, birthday, targetUserId]
+        );
+
+        if (result.rowCount === 0) {
+            return res.status(404).json({ message: 'User not found' });
         }
-    );
+
+        res.json({ message: 'Profile updated successfully', user: result.rows[0] });
+    } catch (err) {
+        console.error("Update error:", err);
+        res.status(500).json({ message: 'Database error' });
+    }
 };
 
-// Delete Profile
-const deleteProfile = (req, res) => {
-    const userId = req.userId;
-    const targetUserId = req.params.id || userId; // Admin can target ANYTONEEEE
 
-    // If the user is trying to delete their own profile or if the user is an admin deleting someone's profile
+// Delete Profile
+const deleteProfile = async (req, res) => {
+    const userId = req.userId;
+    const targetUserId = req.params.id || userId;
+
     if (userId !== targetUserId && !req.isAdmin) {
         return res.status(403).json({ message: 'Forbidden. You can only delete your own profile.' });
     }
 
-    db.query('DELETE FROM users WHERE id = ?', [targetUserId], (err, results) => {
-        if (err) {
-            return res.status(500).json({ message: 'Database error' });
-        }
-        if (results.affectedRows === 0) {
+    try {
+        const result = await db.query('DELETE FROM users WHERE user_id = $1', [targetUserId]);
+
+        if (result.rowCount === 0) {
             return res.status(404).json({ message: 'User not found' });
         }
+
         res.json({ message: 'Profile deleted successfully' });
-    });
+    } catch (err) {
+        console.error("Delete error:", err);
+        res.status(500).json({ message: 'Database error' });
+    }
 };
+
 
 module.exports = { getProfile, updateProfile, deleteProfile };

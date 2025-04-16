@@ -31,7 +31,7 @@ const isAdmin = async (req, res, next) => {
 
   try {
     // Check if user is an admin
-    const result = await db.query("SELECT isAdmin FROM users WHERE id = $1", [
+    const result = await db.query("SELECT isAdmin FROM users WHERE user_id = $1", [
       user_id,
     ]);
 

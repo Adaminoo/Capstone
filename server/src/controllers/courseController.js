@@ -2,7 +2,7 @@ const db = require("../config/db");
 
 // Helper functions to check if a user or course exists, and if the user is already registered
 const checkUserExists = async (user_id) => {
-  const userQuery = "SELECT * FROM users WHERE id = $1";
+  const userQuery = "SELECT * FROM users WHERE user_id = $1";
   const result = await db.query(userQuery, [user_id]);
   return result.rowCount > 0;
 };
