@@ -12,7 +12,7 @@ const isAdmin = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user_id = decoded.user_id;
 
-    const result = await db.query("SELECT isAdmin FROM users WHERE id = $1", [
+    const result = await db.query("SELECT isAdmin FROM users WHERE user_id = $1", [
       user_id,
     ]);
 
@@ -33,4 +33,6 @@ const isAdmin = async (req, res, next) => {
   }
 };
 
-module.exports = isAdmin;
+module.exports = {
+  isAdmin
+};

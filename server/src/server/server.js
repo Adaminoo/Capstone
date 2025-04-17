@@ -5,6 +5,7 @@ const authRoutes = require("../routes/authRoutes");
 const errorHandler = require("../middleware/errorMiddleware");
 const profileRoutes = require("../routes/profileRoutes");
 const courseRoutes = require("../routes/courseRoutes");
+const adminRoutes = require("../routes/adminRoutes");
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ app.use("/api", courseRoutes);
 
 // Error Middleware
 app.use(errorHandler);
+
+app.use("/admin", adminRoutes);
 
 app.get("/api/message", (req, res) => {
   res.json({ message: "Hello from server!" });

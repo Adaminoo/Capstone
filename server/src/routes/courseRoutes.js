@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { isAuth } = require("../middleware/authMiddleware");
-const isAdmin = require("../middleware/isAdmin");
+const { isAdmin } = require("../middleware/isAdmin"); // ✅ Fix here
+
 const {
   getCoursesForUser,
   registerForCourse,
@@ -19,14 +20,14 @@ router.get("/allcourses", isAuth, getAllCourses); // Get a list of all courses -
 
 // Admin routes
 router.post(
-  "/admin/courses/register/:user_id/:course_id", // Admin register user for course
+  "/admin/courses/register/:user_id/:course_id",
   isAuth,
   isAdmin,
   adminRegisterUserForCourse
 );
 
 router.delete(
-  "/admin/courses/unregister/:user_id/:course_id", // Admin unregister user from course
+  "/admin/courses/unregister/:user_id/:course_id",
   isAuth,
   isAdmin,
   adminUnregisterUserFromCourse
