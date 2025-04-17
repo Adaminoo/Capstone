@@ -39,7 +39,6 @@ function Login() {
     }
 
     return (
-      <div className='body'>
         <div className='login'>
           <div className='loginLeft'>
             <div className='loginTitle'>Welcome to <span style={{fontWeight: 'bold'}} >Student Portal</span></div>
@@ -52,7 +51,6 @@ function Login() {
             <input className='loginInput' id='loginUsername' placeholder='Username'></input>
             <input className='loginInput' id='loginPassword' placeholder='Password'></input>
           </div>
-        </div>
         </div>
       )
 }

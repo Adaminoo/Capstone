@@ -22,9 +22,8 @@ const checkUserRegistration = async (user_id, course_id) => {
 
 const getAllCourses = async (req, res) => {
   const query = `
-  SELECT string_id, title, description FROM courses`;
+  SELECT * FROM courses`;
   try {
-    console.log('hi')
     const result = await db.query(query)
     res.json(result.rows);
   } catch (err) {
