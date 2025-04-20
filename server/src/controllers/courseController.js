@@ -36,7 +36,7 @@ const getAllCourses = async (req, res) => {
 const getCoursesForUser = async (req, res) => {
   const user_id = req.user_id;
   const query = `
-    SELECT c.course_id, c.name, c.description
+    SELECT c.course_id, c.title, c.description
     FROM courses c
     JOIN user_courses uc ON c.course_id = uc.course_id
     WHERE uc.user_id = $1

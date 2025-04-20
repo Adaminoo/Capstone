@@ -341,3 +341,7 @@ a {
 .cdRegister {
   background-color: rgb(43, 111, 193);
 }
+
+.registered {
+  background-color: gray;
+}

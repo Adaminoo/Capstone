@@ -5,15 +5,41 @@ import Navbar from '../components/Navbar'
 function Courses() {
     const token = localStorage.getItem('authToken')
     const [courses, setCourses] = useState([])
+    const [registeredCourses, setRegisteredCourses] = useState([])
     useEffect(() => {
-        fetch("api/allcourses", {
-            method: "GET",
-            headers: {'Content-Type' : 'application/json', 'Authorization' : `Bearer ${token}`},
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            setCourses(data)
-        })
+        async function fetchData() {
+            try {
+                const allCoursesRes = await fetch("/api/allcourses", {
+                    method: "GET",
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : `Bearer ${token}`,
+                    }
+                });
+                const allCoursesData = await allCoursesRes.json();
+
+                const userCoursesRes = await fetch("/api/courses", {
+                    method: "GET",
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'Authorization' : `Bearer ${token}`,
+                    }
+                });
+                const userCoursesData = await userCoursesRes.json();
+                console.log("User registered courses:", userCoursesData);
+                const registeredIds = userCoursesData.map(course => course.course_id);
+                const updatedCourses = allCoursesData.map(course => ({
+                    ...course,
+                    is_registered: registeredIds.includes(course.course_id)
+                }));
+
+                setCourses(updatedCourses);
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            }
+        }
+
+        fetchData();
     }, [])
 
     useEffect(() => {
@@ -21,7 +47,6 @@ function Courses() {
     }, [])
 
     async function registerForCourse(course_id) {
-        console.log(course_id)
         try {
             const response = await fetch(`/api/courses/${course_id}/register`, {
                 method: "POST",
@@ -36,6 +61,15 @@ function Courses() {
             if(!response.ok) {
                 throw new Error(data.message || "Failed to register for course")
             }
+
+            setCourses(prevCourses => 
+                prevCourses.map(course => 
+                    course.course_id === course_id 
+                        ? { ...course, is_registered: true }
+                        : course
+                )
+            );
+            
         } catch (error) {
             console.error("Registration Error: ", error)
         }
@@ -62,7 +96,17 @@ function Courses() {
                                         <div className='cdPiece'><span className='cdTitle'>Maximum Capacity: </span>{course.maximum_capacity}</div>
                                         <div className='cdPiece'><span className='cdTitle'>Credit Hours: </span>{course.credit_hours}</div>
                                         <div className='cdPiece'><span className='cdTitle'>Tuition Cost: </span>${course.tuition_cost}</div>
-                                        <button className='cdRegister' onClick={() => registerForCourse(course.course_id)}>Sign up for this course!</button>
+                                        <button 
+                                            className={`cdRegister ${course.is_registered ? 'registered' : ''}`} 
+                                            onClick={() => {
+                                                if (!course.is_registered) {
+                                                registerForCourse(course.course_id);
+                                                }
+                                            }}
+                                            disabled={course.is_registered}
+                                            >
+                                            {course.is_registered ? 'Already Registered' : 'Sign up for this course!'}
+                                        </button>
                                     </div>
                                 </div>
                             </li>
