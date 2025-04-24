@@ -10,19 +10,27 @@ const isAdmin = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log("Decoded token:", decoded);
+
     const user_id = decoded.user_id;
 
-    const result = await db.query("SELECT isAdmin FROM users WHERE user_id = $1", [
-      user_id,
-    ]);
-  
+    // Query the database to check if the user is an admin
+    const result = await db.query(
+      "SELECT isadmin FROM users WHERE user_id = $1",
+      [user_id]
+    );
+
+    console.log("Database query result:", result.rows);
+    console.log("Checking exact key for isadmin:", result.rows[0]);
+
     if (result.rows.length === 0) {
       return res.status(401).json({ message: "User not found" });
     }
-    
-    const isAdmin = result.rows[0].isAdmin;
-    
-    if (!isAdmin) {
+
+    const userIsAdmin = result.rows[0]["isadmin"];
+    console.log("User admin status from DB:", userIsAdmin);
+
+    if (!userIsAdmin) {
       return res.status(403).json({ message: "Access denied" });
     }
 
@@ -34,5 +42,5 @@ const isAdmin = async (req, res, next) => {
 };
 
 module.exports = {
-  isAdmin
+  isAdmin,
 };

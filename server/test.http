@@ -25,7 +25,7 @@ Content-Type: application/json
 
 POST http://localhost:3001/api/courses/2/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzQ1MTU2OTQ4LCJleHAiOjE3NDUxNjA1NDh9.dhl7bS8tPjyYRzCfOygamFFu7OoBBrNm1HPof2z_dmU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE3NDU1MDczMTEsImV4cCI6MTc0NTUxMDkxMX0.24khAbTnwFjX_jp71gx09nnxz3lme5dsowqJb6KEeZM
 
 {
   "username": "Admin"
@@ -35,7 +35,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwia
 
 GET http://localhost:3001/api/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJpYXQiOjE3NDQ3MjQ0MzMsImV4cCI6MTc0NDcyODAzM30.HK3z1JNGPa8AKjgheaV3CMyLQqE-gk0_gOzBuQqIQho
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE3NDU1MDczMTEsImV4cCI6MTc0NTUxMDkxMX0.24khAbTnwFjX_jp71gx09nnxz3lme5dsowqJb6KEeZM
 
 ###
 
@@ -48,7 +48,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpY
 ###
 // This is the endpoint to get all students
 GET http://localhost:3001/admin/students
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE3NDQ2NDE3MjksImV4cCI6MTc0NDY0NTMyOX0.Nn02M8m4AOAjE8MGWmlFGpgYA_trpv__1955YiABslE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE3NDU1MDc2NzEsImV4cCI6MTc0NTUxMTI3MX0.HNXiKuIrUlzpl6I7ZguZcK1cI_Foq1iyBTX5QNoi35I
 
 ### 
 
