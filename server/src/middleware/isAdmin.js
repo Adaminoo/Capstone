@@ -15,13 +15,13 @@ const isAdmin = async (req, res, next) => {
     const result = await db.query("SELECT isAdmin FROM users WHERE user_id = $1", [
       user_id,
     ]);
-
+  
     if (result.rows.length === 0) {
       return res.status(401).json({ message: "User not found" });
     }
-
+    
     const isAdmin = result.rows[0].isAdmin;
-
+    
     if (!isAdmin) {
       return res.status(403).json({ message: "Access denied" });
     }

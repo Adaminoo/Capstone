@@ -66,9 +66,10 @@ const deleteCourse = async (req, res) => {
 const getAllStudents = async (req, res) => {
   try {
     const result = await db.query(
-      "SELECT * FROM students ORDER BY registered_at DESC"
+      "SELECT * FROM users"
     );
     res.status(200).json(result.rows);
+    console.log("Students fetched from DB:", result.rows);
   } catch (err) {
     console.error("Failed to retrieve students:", err);
     res.status(500).json({ message: "Failed to retrieve students" });
