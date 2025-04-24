@@ -48,7 +48,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpY
 ###
 // This is the endpoint to get all students
 GET http://localhost:3001/admin/students
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE3NDU1MDc2NzEsImV4cCI6MTc0NTUxMTI3MX0.HNXiKuIrUlzpl6I7ZguZcK1cI_Foq1iyBTX5QNoi35I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE3NDU1MTAyOTUsImV4cCI6MTc0NTUxMzg5NX0.DXfLy4r-fYukjoFmhKDFQGKZEj30SpIMBBLcmKfUTEo
 
 ### 
 

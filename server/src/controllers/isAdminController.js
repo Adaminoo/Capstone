@@ -67,7 +67,7 @@ const getAllStudents = async (req, res) => {
   try {
     // Updated the query to order by 'user_id' instead of 'registered_at'
     const result = await db.query(
-      "SELECT * FROM students ORDER BY registered_at DESC"
+      "SELECT * FROM users ORDER BY user_id DESC"
     );
     res.status(200).json(result.rows);
     console.log("Students fetched from DB:", result.rows);
