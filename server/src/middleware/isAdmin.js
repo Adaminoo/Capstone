@@ -20,8 +20,9 @@ const isAdmin = async (req, res, next) => {
       return res.status(401).json({ message: "User not found" });
     }
     
-    const isAdmin = result.rows[0].isAdmin;
-    
+    const isAdmin = result.rows[0].isadmin;
+    console.log("Raw isAdmin value:", result.rows[0].isadmin);
+    console.log("Type of isAdmin:", typeof result.rows[0].isadmin);
     if (!isAdmin) {
       return res.status(403).json({ message: "Access denied" });
     }
