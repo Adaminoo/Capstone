@@ -34,19 +34,13 @@ const getAllCourses = async (req, res) => {
 
 // Get courses for the authenticated user
 const getCoursesForUser = async (req, res) => {
-  const user_id = req.params.user_id || req.query.user_id || req.body.user_id || req.user_id;
-
-  if (!user_id) {
-    return res.status(400).json({ message: "User ID is required" });
-  }
-
+  const user_id = req.user_id;
   const query = `
     SELECT c.course_id, c.title, c.description
     FROM courses c
     JOIN user_courses uc ON c.course_id = uc.course_id
     WHERE uc.user_id = $1
   `;
-
   try {
     const results = await db.query(query, [user_id]);
     res.json(results.rows);
