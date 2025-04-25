@@ -35,7 +35,6 @@ function Login() {
         })
         const token = localStorage.getItem('authToken')
         console.log(localStorage.getItem('authToken'))
-        
     }
 
     return (

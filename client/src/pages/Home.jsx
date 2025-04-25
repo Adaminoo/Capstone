@@ -4,8 +4,12 @@ import { Navigate, useNavigate, Link } from 'react-router';
 import Navbar from '../components/Navbar'
 import Background from '../assets/images/ARC_Website_Content_Study_Groups.jpeg'
 import RightArrow from '../assets/icons/arrow_forward_ios_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png'
+import updateUsername from '../utils/updateUsername';
 
 function Home() {
+
+    const [user, setUser] = useState({ name: ''})
+
     const [currentUser, setCurrentUser] = useState({})
     const navigate = useNavigate();
     const authToken = localStorage.getItem("authToken")
@@ -71,6 +75,8 @@ function Home() {
                 <div className='home'>
                     <img src={Background} className='homeBackground'/>
                     <div className='homeText'>
+                        <button onClick={() => updateUsername(setUser, 'Adam')}>test util</button>
+                        <div>{user.name}</div>
                         <div className='homeTitle'>PINNACLE TECHNOLOGY ACADEMY</div>
                         <div style={{marginBottom: "10px"}} >Developing real-world skills. Shaping bright futures. Driving tomorrow's innovation.</div>
                         <Link className='homeNavButton' to={"/courses"} >Want to see our courses?<img src={RightArrow} /></Link>
