@@ -17,15 +17,15 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-  "username": "Adamino",
-  "password": "pass"
+  "username": "Admin",
+  "password": "Admin"
 }
 
 ###
 
-POST http://localhost:3001/api/courses/2/register
+POST http://localhost:3001/api/courses/21/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzQ1NDE1NTQ3LCJleHAiOjE3NDU0MTkxNDd9.N-oXHh6Gf7ORim5whAYGittWNPVqL4k53GOkTAZCNQk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJpYXQiOjE3NDU1OTY5MzQsImV4cCI6MTc0NTYwMDUzNH0.t31qZLtZO2ouOtl105b3A7-RS2QbyxTiXQUSYF8luOQ
 
 {
   "username": "Admin"
@@ -48,14 +48,36 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpY
 ###
 // This is the endpoint to get all students
 GET http://localhost:3001/admin/students
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE3NDQ2NDE3MjksImV4cCI6MTc0NDY0NTMyOX0.Nn02M8m4AOAjE8MGWmlFGpgYA_trpv__1955YiABslE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzQ1NTk3MjU3LCJleHAiOjE3NDU2MDA4NTd9.VsBEKtAE99B4GdRmI_v4cLCPM18j1YWrqHmhi5ylvKU
 
 ### 
 
-GET http://localhost:3001/api/courses
+GET http://localhost:3001/api/courses/10
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJpYXQiOjE3NDU1ODg3NjYsImV4cCI6MTc0NTU5MjM2Nn0.KiPV7V0cH4wnvEp5A-bukjV62SGcD6eRKb49orSpLhU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzQ1NTk3MTk2LCJleHAiOjE3NDU2MDA3OTZ9.ItAzcBCvoaV7igZbPuxRsgxgD6ChvsumIWm6LQuYi04
+
+###
+
+POST http://localhost:3001/api/admin/courses/register/10/21
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzQ1NTk3MjU3LCJleHAiOjE3NDU2MDA4NTd9.VsBEKtAE99B4GdRmI_v4cLCPM18j1YWrqHmhi5ylvKU
+
+###
+
+DELETE http://localhost:3001/api/admin/courses/unregister/10/21
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzQ1NTk3MTk2LCJleHAiOjE3NDU2MDA3OTZ9.ItAzcBCvoaV7igZbPuxRsgxgD6ChvsumIWm6LQuYi04
+
+###
+
+PUT http://localhost:3001/admin/courses/23
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzQ1Njk3MDE2LCJleHAiOjE3NDU3MDA2MTZ9.dbBzwXZh1aCzisinBPuvhRLHtbLKC8h7hyOwLG3rXKo
 
 {
-  "user_id" : 10
+  "schedule" : "Update test",
+  "classroom_number" : "4", 
+  "maximum_capacity" : "5", 
+  "credit_hours" : "6", 
+  "tuition_cost" : 7
 }

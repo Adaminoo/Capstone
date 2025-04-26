@@ -30,12 +30,13 @@ const addCourse = async (req, res) => {
 // Update a course
 const updateCourse = async (req, res) => {
   const { id } = req.params;
-  const { name, description } = req.body;
+  const { schedule, classroom_number, maximum_capacity, credit_hours, tuition_cost } = req.body;
   try {
     const result = await db.query(
-      "UPDATE courses SET name = $1, description = $2 WHERE user_id = $3 RETURNING *",
-      [name, description, id]
+      "UPDATE courses SET schedule = $1, classroom_number = $2, maximum_capacity = $3, credit_hours = $4, tuition_cost = $5 WHERE course_id = $6 RETURNING *",
+      [ schedule, classroom_number, maximum_capacity, credit_hours, tuition_cost , id]
     );
+    console.log(result)
     if (result.rows.length === 0) {
       return res.status(404).json({ message: "Course not found" });
     }

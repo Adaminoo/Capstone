@@ -21,8 +21,6 @@ const isAdmin = async (req, res, next) => {
     }
     
     const isAdmin = result.rows[0].isadmin;
-    console.log("Raw isAdmin value:", result.rows[0].isadmin);
-    console.log("Type of isAdmin:", typeof result.rows[0].isadmin);
     if (!isAdmin) {
       return res.status(403).json({ message: "Access denied" });
     }
