@@ -11,7 +11,7 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, "../client/dist")));
+app.use(express.static(path.resolve(__dirname, "../../../client/dist")));
 
 
 app.use(express.json());
