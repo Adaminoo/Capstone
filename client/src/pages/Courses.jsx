@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 
 function Courses() {
     const token = localStorage.getItem('authToken')
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const [courses, setCourses] = useState([])
     const [registeredCourses, setRegisteredCourses] = useState([])
     useEffect(() => {
@@ -18,7 +19,7 @@ function Courses() {
                 });
                 const allCoursesData = await allCoursesRes.json();
 
-                const userCoursesRes = await fetch("/api/courses", {
+                const userCoursesRes = await fetch(`/api/courses/${currentUser.user_id}`, {
                     method: "GET",
                     headers: {
                         'Content-Type' : 'application/json',
@@ -26,7 +27,6 @@ function Courses() {
                     }
                 });
                 const userCoursesData = await userCoursesRes.json();
-                console.log("User registered courses:", userCoursesData);
                 const registeredIds = userCoursesData.map(course => course.course_id);
                 const updatedCourses = allCoursesData.map(course => ({
                     ...course,
@@ -42,10 +42,6 @@ function Courses() {
         fetchData();
     }, [])
 
-    useEffect(() => {
-
-    }, [])
-
     async function registerForCourse(course_id) {
         try {
             const response = await fetch(`/api/courses/${course_id}/register`, {
@@ -54,7 +50,7 @@ function Courses() {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
-                body: JSON.stringify({"username": "Adamino"})
+                body: JSON.stringify({"username": currentUser.username})
             });
             const data = await response.json();
 

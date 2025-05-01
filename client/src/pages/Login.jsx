@@ -4,15 +4,14 @@ import {BrowserRouter as Router, Routes, Route, Link, Navigate, useNavigate } fr
 
 function Login() {
     const navigate = useNavigate();
+    const [error, setError] = useState('')
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         const tempUser = document.getElementById('loginUsername').value
         const tempPass = document.getElementById('loginPassword').value
-        console.log('Username: ', tempUser)
-        console.log('Password: ', tempPass)
     
         const url = '/api/login'
-        fetch(url, {
+        const res = await fetch(url, {
             method: "POST",
             headers: {
                'Content-Type': 'application/json'
@@ -21,20 +20,16 @@ function Login() {
               username: tempUser,
               password: tempPass
             })
-        })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.token !== undefined) {
-            localStorage.setItem('authToken', data.token)
-            localStorage.setItem('currentUser', tempUser)
-            navigate("/home")
-          }
-        })
-        .catch((err) => {
-          console.error('Login error: ', err)
-        })
-        const token = localStorage.getItem('authToken')
-        console.log(localStorage.getItem('authToken'))
+        });
+
+        const data = await res.json();
+        console.log(data)
+        setError(data.message)
+        if (data.token !== undefined) {
+          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('currentUser', tempUser);
+          navigate("/home");
+        }
     }
 
     return (
@@ -48,7 +43,8 @@ function Login() {
           </div>
           <div className='loginRight'>
             <input className='loginInput' id='loginUsername' placeholder='Username'></input>
-            <input className='loginInput' id='loginPassword' placeholder='Password'></input>
+            <input className='loginInput' type='password' id='loginPassword' placeholder='Password'></input>
+            <div>{error}</div>
           </div>
         </div>
       )

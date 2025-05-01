@@ -121,6 +121,10 @@ button:focus-visible {
   border-radius: 8px;
 }
 
+button {
+  background-color: rgb(43, 111, 193);
+}
+
 .confSignupButton, .loginButton {
   background-color: rgb(43, 43, 193);
   height: 49px;
@@ -142,7 +146,6 @@ button:focus-visible {
 
 .userInput {
   width: 200px;
-  margin: 20px 5px;
 }
 
 .navbar {
@@ -264,7 +267,7 @@ a {
   height:100%;
 }
 
-.coursesList {
+.coursesList, .adminCoursesList {
   list-style: none;
   padding: 0;
   margin: 20px;
@@ -317,7 +320,7 @@ a {
 
 .cdPiece {
   position: relative;
-  width: 50%;
+  width: 40%;
   height: 45px;
   display: flex;
   align-items: center;
@@ -344,4 +347,105 @@ a {
 
 .registered {
   background-color: gray;
+}
+
+.adminBody {
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stuCoursesList {
+
+}
+
+.studentList {
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+  display:flex;
+  flex-direction: column;
+
+}
+
+.adminStudentCourses {
+  
+  display:flex;
+  justify-content: space-between;
+}
+
+.adminSearchQ {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.searchButtons {
+  width: 240px;
+  display:flex;
+  justify-content: space-between;
+  margin:24px;
+}
+
+.searchResults {
+  width: 520px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.adminListItem {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.adminListItem:last-child {
+  border-bottom: none;
+}
+
+.adminCourseDetails {
+  width:40%;
+  display:flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  padding: 5px;
+  justify-content: space-between;
+
+}
+
+.adminCourseInput {
+  width:30%;
+  margin: 0;
+  margin-right: 10px;
+  padding: 0;
+}
+
+.adminCdPiece {
+  position: relative;
+  width: 50%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  justify-content: space-between;
+}
+
+.adminEditButton {
+  margin: auto
+}
+
+.adminCoursesList {
+
+}
+
+.userInputWrap {
+  width:235px;
+  height: 70px;
+  display:flex;
+  align-items: center;
+  flex-direction: column;
 }

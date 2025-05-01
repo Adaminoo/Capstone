@@ -75,8 +75,6 @@ function Home() {
                 <div className='home'>
                     <img src={Background} className='homeBackground'/>
                     <div className='homeText'>
-                        <button onClick={() => updateUsername(setUser, 'Adam')}>test util</button>
-                        <div>{user.name}</div>
                         <div className='homeTitle'>PINNACLE TECHNOLOGY ACADEMY</div>
                         <div style={{marginBottom: "10px"}} >Developing real-world skills. Shaping bright futures. Driving tomorrow's innovation.</div>
                         <Link className='homeNavButton' to={"/courses"} >Want to see our courses?<img src={RightArrow} /></Link>
