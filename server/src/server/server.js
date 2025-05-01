@@ -13,10 +13,11 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, "../client/dist")));
 
+
 app.use(express.json());
 // Sends index.html for any other route
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
+  res.sendFile(path.resolve(__dirname, "../../../client/dist/index.html"));
 });
 // Auth Routes
 app.use("/api", authRoutes);
@@ -39,4 +40,5 @@ app.get("/api/message", (req, res) => {
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(__dirname)
 });
