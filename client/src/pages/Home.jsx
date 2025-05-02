@@ -8,9 +8,7 @@ import updateUsername from '../utils/updateUsername';
 
 function Home() {
 
-    const [user, setUser] = useState({ name: ''})
-
-    const [currentUser, setCurrentUser] = useState({})
+    const [currentUser, setCurrentUser] = useState()
     const navigate = useNavigate();
     const authToken = localStorage.getItem("authToken")
   if (!authToken) {
@@ -28,6 +26,7 @@ function Home() {
     .then((data) => {
         localStorage.setItem('currentUser', JSON.stringify(data));
         const storedUser = localStorage.getItem('currentUser')
+        console.log(storedUser, 'hi')
         setCurrentUser(JSON.parse(storedUser))
     })
   }, [])

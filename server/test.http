@@ -35,15 +35,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJpY
 
 GET http://localhost:3001/api/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE3NDU1MDczMTEsImV4cCI6MTc0NTUxMDkxMX0.24khAbTnwFjX_jp71gx09nnxz3lme5dsowqJb6KEeZM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE3NDYyMTAxMzQsImV4cCI6MTc0NjIxMzczNH0.YN7U_cGpjsaoEUjGnNf4ExKwEzt4jyqmBf6wy6eqTNs
 
 ###
 
 GET http://localhost:3001/api/allcourses
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJpYXQiOjE3NDQ3MjQ0MzMsImV4cCI6MTc0NDcyODAzM30.HK3z1JNGPa8AKjgheaV3CMyLQqE-gk0_gOzBuQqIQho
-=======
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE3NDQ2NDE3MjksImV4cCI6MTc0NDY0NTMyOX0.Nn02M8m4AOAjE8MGWmlFGpgYA_trpv__1955YiABslE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE3NDYxOTQ4NzAsImV4cCI6MTc0NjE5ODQ3MH0.z2NSip1B5VDVTfa3nupYuyhgs-VbXk_tqVis5CGRhME
 
 ###
 // This is the endpoint to get all students
@@ -52,9 +50,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwia
 
 ### 
 
-GET http://localhost:3001/api/courses/10
+GET http://localhost:3001/api/courses/3
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzQ1NTk3MTk2LCJleHAiOjE3NDU2MDA3OTZ9.ItAzcBCvoaV7igZbPuxRsgxgD6ChvsumIWm6LQuYi04
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE3NDYyMTAxMzQsImV4cCI6MTc0NjIxMzczNH0.YN7U_cGpjsaoEUjGnNf4ExKwEzt4jyqmBf6wy6eqTNs
 
 ###
 
@@ -72,7 +70,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwia
 
 PUT http://localhost:3001/admin/courses/23
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzQ1Njk3MDE2LCJleHAiOjE3NDU3MDA2MTZ9.dbBzwXZh1aCzisinBPuvhRLHtbLKC8h7hyOwLG3rXKo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE3NDYxOTYzNzMsImV4cCI6MTc0NjE5OTk3M30.BBKjzuQsCoemfqZW3tgVtoWha4vIomRJ6YOPs5LZTVQ
 
 {
   "schedule" : "Update test",

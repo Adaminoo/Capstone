@@ -21,6 +21,7 @@ const checkUserRegistration = async (user_id, course_id) => {
 };
 
 const getAllCourses = async (req, res) => {
+  console.log('hi')
   const query = `
   SELECT * FROM courses`;
   try {

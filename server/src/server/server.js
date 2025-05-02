@@ -16,9 +16,7 @@ app.use(express.static(path.resolve(__dirname, "../../../client/dist")));
 
 app.use(express.json());
 // Sends index.html for any other route
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../../../client/dist/index.html"));
-});
+
 // Auth Routes
 app.use("/api", authRoutes);
 
@@ -35,6 +33,10 @@ app.use("/admin", adminRoutes);
 
 app.get("/api/message", (req, res) => {
   res.json({ message: "Hello from server!" });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../../../client/dist/index.html"));
 });
 
 const PORT = process.env.PORT || 3001;

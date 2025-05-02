@@ -4,32 +4,34 @@ import {BrowserRouter as Router, Routes, Route, Link, Navigate, useNavigate } fr
 
 function Login() {
     const navigate = useNavigate();
-    const [error, setError] = useState('')
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
-        const tempUser = document.getElementById('loginUsername').value
-        const tempPass = document.getElementById('loginPassword').value
-    
-        const url = '/api/login'
-        const res = await fetch(url, {
-            method: "POST",
-            headers: {
-               'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              username: tempUser,
-              password: tempPass
-            })
+      try {
+        const response = await fetch("/api/login", {
+          method: "POST",
+          headers: {
+            'Content-Type' : 'application/json'
+          },
+          body: JSON.stringify({username: username, password: password})
         });
 
-        const data = await res.json();
-        console.log(data)
-        setError(data.message)
-        if (data.token !== undefined) {
-          localStorage.setItem('authToken', data.token);
-          localStorage.setItem('currentUser', tempUser);
-          navigate("/home");
+        if (!response.ok) {
+          const error = await response.text();
+          console.error('Login failed: ', error)
+          return;
         }
+
+        const data = await response.json()
+        console.log(data)
+        if (data.token !== undefined) {
+          localStorage.setItem('authToken', data.token)
+        navigate('/home')
+        }
+      } catch (error) {
+        console.error('Error during login: ', error)
+      }
     }
 
     return (
@@ -42,9 +44,19 @@ function Login() {
             </div>
           </div>
           <div className='loginRight'>
-            <input className='loginInput' id='loginUsername' placeholder='Username'></input>
-            <input className='loginInput' type='password' id='loginPassword' placeholder='Password'></input>
-            <div>{error}</div>
+            <input
+              type='text'
+              placeholder='Username'
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+            <input
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <div>{username}</div>
           </div>
         </div>
       )

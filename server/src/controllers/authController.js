@@ -10,7 +10,6 @@ const { generateToken } = require("../utils/authUtils");
 // When logging in, it only checks for the usernmae and password.
 exports.login = async (req, res) => {
   const { username, password } = req.body;
-
   const sql = "SELECT * FROM users WHERE username = $1";
   try {
     const result = await db.query(sql, [username]);

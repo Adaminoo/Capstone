@@ -17,8 +17,9 @@ function Courses() {
                         'Authorization' : `Bearer ${token}`,
                     }
                 });
+                console.log(allCoursesRes)
                 const allCoursesData = await allCoursesRes.json();
-
+                console.log(currentUser.user_id)
                 const userCoursesRes = await fetch(`/api/courses/${currentUser.user_id}`, {
                     method: "GET",
                     headers: {
